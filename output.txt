@@ -1,0 +1,33 @@
+./bin/imageSobelNPP --input data/1.4.01.tiff,data/1.4.02.tiff,data/1.4.03.tiff,data/1.4.04.tiff,data/1.4.06.tiff,data/1.4.07.tiff,data/1.4.08.tiff,data/1.4.09.tiff,data/1.4.10.tiff,data/1.4.11.tiff,data/1.4.12.tiff,data/5.3.02.tiff
+./bin/imageSobelNPP Starting...
+
+GPU Device 0: "Ampere" with compute capability 8.6
+
+NPP Library Version 11.3.3
+  CUDA Driver  Version: 12.6
+  CUDA Runtime Version: 11.3
+  Device 0: <          Ampere >, Compute SM 8.6 detected
+file opened: <data/1.4.01.tiff> successfully!
+Saved image: data/1.4.01_sobel.pgm
+file opened: <data/1.4.02.tiff> successfully!
+Saved image: data/1.4.02_sobel.pgm
+file opened: <data/1.4.03.tiff> successfully!
+Saved image: data/1.4.03_sobel.pgm
+file opened: <data/1.4.04.tiff> successfully!
+Saved image: data/1.4.04_sobel.pgm
+file opened: <data/1.4.06.tiff> successfully!
+Saved image: data/1.4.06_sobel.pgm
+file opened: <data/1.4.07.tiff> successfully!
+Saved image: data/1.4.07_sobel.pgm
+file opened: <data/1.4.08.tiff> successfully!
+Saved image: data/1.4.08_sobel.pgm
+file opened: <data/1.4.09.tiff> successfully!
+Saved image: data/1.4.09_sobel.pgm
+file opened: <data/1.4.10.tiff> successfully!
+Saved image: data/1.4.10_sobel.pgm
+file opened: <data/1.4.11.tiff> successfully!
+Saved image: data/1.4.11_sobel.pgm
+file opened: <data/1.4.12.tiff> successfully!
+Saved image: data/1.4.12_sobel.pgm
+file opened: <data/5.3.02.tiff> successfully!
+Saved image: data/5.3.02_sobel.pgm
