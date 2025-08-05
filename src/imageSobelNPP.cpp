@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            filePath = sdkFindFilePath("Lena.pgm", argv[0]);
+            filePath = sdkFindFilePath("sloth.pgm", argv[0]);
         }
 
         if (filePath)
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            sFilename = "Lena.pgm";
+            sFilename = "sloth.pgm";
         }
 
         // if we specify the filename at the command line, then we only test
@@ -109,14 +109,14 @@ int main(int argc, char *argv[])
 
         if (infile.good())
         {
-            std::cout << "nppiRotate opened: <" << sFilename.data()
+            std::cout << "file opened: <" << sFilename.data()
                       << "> successfully!" << std::endl;
             file_errors = 0;
             infile.close();
         }
         else
         {
-            std::cout << "nppiRotate unable to open: <" << sFilename.data() << ">"
+            std::cout << "file unable to open: <" << sFilename.data() << ">"
                       << std::endl;
             file_errors++;
             infile.close();
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
             sResultFilename = sResultFilename.substr(0, dot);
         }
 
-        sResultFilename += "_rotate.pgm";
+        sResultFilename += "_sobel.pgm";
 
         if (checkCmdLineFlag(argc, (const char **)argv, "output"))
         {
@@ -158,23 +158,11 @@ int main(int argc, char *argv[])
         NppiSize oSrcSize = {(int)oDeviceSrc.width(), (int)oDeviceSrc.height()};
         NppiPoint oSrcOffset = {0, 0};
         NppiSize oSizeROI = {(int)oDeviceSrc.width(), (int)oDeviceSrc.height()};
-
-        // Calculate the bounding box of the rotated image
-        NppiRect oBoundingBox;
-        double angle = 45.0; // Rotation angle in degrees
-        NPP_CHECK_NPP(nppiGetRotateBound(oSrcSize, angle, &oBoundingBox));
-
         // allocate device image for the rotated image
-        npp::ImageNPP_8u_C1 oDeviceDst(oBoundingBox.width, oBoundingBox.height);
-
-        // Set the rotation point (center of the image)
-        NppiPoint oRotationCenter = {(int)(oSrcSize.width / 2), (int)(oSrcSize.height / 2)};
+        npp::ImageNPP_8u_C1 oDeviceDst(oSizeROI.width, oSizeROI.height);
 
         // run the rotation
-        NPP_CHECK_NPP(nppiRotate_8u_C1R(
-            oDeviceSrc.data(), oSrcSize, oDeviceSrc.pitch(), oSrcOffset,
-            oDeviceDst.data(), oDeviceDst.pitch(), oBoundingBox, angle, oRotationCenter,
-            NPPI_INTER_NN));
+        NPP_CHECK_NPP(nppiFilterSobelHoriz_8u_C1R(oDeviceSrc.data(), oDeviceSrc.pitch(), oDeviceDst.data(), oDeviceDst.pitch(), oSizeROI));
 
         // declare a host image for the result
         npp::ImageCPU_8u_C1 oHostDst(oDeviceDst.size());

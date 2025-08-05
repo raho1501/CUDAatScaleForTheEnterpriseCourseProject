@@ -32,10 +32,10 @@
 ################################################################################
 
 # Define the compiler and flags
-NVCC = /usr/local/cuda/bin/nvcc
 CXX = g++
-CXXFLAGS = -std=c++11 -I/usr/local/cuda/include -Iinclude
-LDFLAGS = -L/usr/local/cuda/lib64 -lcudart -lnppc -lnppial -lnppicc -lnppidei -lnppif -lnppig -lnppim -lnppist -lnppisu -lnppitc
+NVCC = /usr/local/cuda/bin/nvcc -ccbin $(CXX)
+CXXFLAGS = -std=c++11 -I/usr/local/cuda/include -Iinclude -I../Common -I../Common/UtilNPP 
+LDFLAGS = -L/usr/local/cuda/lib64 -lcudart -lnppc -lnppial -lnppicc -lnppidei -lnppif -lnppig -lnppim -lnppist -lnppisu -lnppitc -lnppisu_static -lnppif_static -lnppc_static -lculibos -lfreeimage
 
 # Define directories
 SRC_DIR = src
@@ -44,8 +44,8 @@ DATA_DIR = data
 LIB_DIR = lib
 
 # Define source files and target executable
-SRC = $(SRC_DIR)/imageRotationNPP.cpp
-TARGET = $(BIN_DIR)/imageRotationNPP
+SRC = $(SRC_DIR)/imageSobelNPP.cpp
+TARGET = $(BIN_DIR)/imageSobelNPP
 
 # Define the default rule
 all: $(TARGET)
@@ -57,15 +57,11 @@ $(TARGET): $(SRC)
 
 # Rule for running the application
 run: $(TARGET)
-	./$(TARGET) --input $(DATA_DIR)/Lena.png --output $(DATA_DIR)/Lena_rotated.png
+	./$(TARGET) --input $(DATA_DIR)/sloth.pgm
 
 # Clean up
 clean:
 	rm -rf $(BIN_DIR)/*
-
-# Installation rule (not much to install, but here for completeness)
-install:
-	@echo "No installation required."
 
 # Help command
 help:
