@@ -45,7 +45,13 @@ If you wish to run the binary directly with custom input/output files, you can u
 
 ```bash
 - Copy code
-./bin/imageSobelNPP --input data/sloth.pgm --output data/sloth_sobel.pgm
+./bin/imageSobelNPP --input data/sloth.pgm
+```
+
+If you have multiple files, then separate them with a comma (```,```) and it will run them as a batch:
+```bash
+- Copy code
+./bin/imageSobelNPP --input data/sloth1.pgm,data/sloth2.pgm
 ```
 
 - Cleaning Up
