@@ -39,19 +39,19 @@ make
 make run
 ```
 
-This command will execute the compiled binary, performing the sobel-filter on the input image (sloth.pgm), and save the result as sloth_sobel.pgm in the data/ directory.
+This command will execute the compiled binary, performing the sobel-filter on the input images, and save the result as sloth_{filename}.pgm in the data/ directory.
 
 If you wish to run the binary directly with custom input/output files, you can use:
 
 ```bash
 - Copy code
-./bin/imageSobelNPP --input data/sloth.pgm
+./bin/imageSobelNPP --input data/file.pgm
 ```
 
 If you have multiple files, then separate them with a comma (```,```) and it will run them as a batch:
 ```bash
 - Copy code
-./bin/imageSobelNPP --input data/sloth1.pgm,data/sloth2.pgm
+./bin/imageSobelNPP --input data/file1.pgm,data/file2.pgm
 ```
 
 - Cleaning Up

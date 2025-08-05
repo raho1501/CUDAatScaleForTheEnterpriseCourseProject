@@ -57,7 +57,7 @@ $(TARGET): $(SRC)
 
 # Rule for running the application
 run: $(TARGET)
-	./$(TARGET) --input $(DATA_DIR)/sloth.pgm,$(DATA_DIR)/sloth.pgm
+	./$(TARGET) --input $(DATA_DIR)/1.4.01.tiff,$(DATA_DIR)/1.4.02.tiff,$(DATA_DIR)/1.4.03.tiff,$(DATA_DIR)/1.4.04.tiff,$(DATA_DIR)/1.4.06.tiff,$(DATA_DIR)/1.4.07.tiff,$(DATA_DIR)/1.4.08.tiff,$(DATA_DIR)/1.4.09.tiff,$(DATA_DIR)/1.4.10.tiff,$(DATA_DIR)/1.4.11.tiff,$(DATA_DIR)/1.4.12.tiff,$(DATA_DIR)/5.3.02.tiff
 
 # Clean up
 clean:
